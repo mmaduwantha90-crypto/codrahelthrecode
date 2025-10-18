@@ -1,0 +1,21 @@
+apply plugin: 'net.corda.plugins.cordapp'
+
+dependencies {
+    // Dependencies required for flows
+    cordaCompile "net.corda:corda-core:4.8"
+    cordaRuntime "net.corda:corda:4.8"
+    cordaCompile "net.corda:corda-node-api:4.8"
+    cordaCompile "net.corda:corda-rpc:4.8"
+}
+
+cordapp {
+    // Platform versions consistent with our contracts
+    targetPlatformVersion 4
+    minimumPlatformVersion 4
+    workflow {
+        name "Health Workflows"
+        vendor "YourOrg"
+        licence "Apache-2.0"
+        versionId 1
+    }
+}

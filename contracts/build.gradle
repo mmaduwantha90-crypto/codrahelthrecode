@@ -1,0 +1,28 @@
+apply plugin: 'net.corda.plugins.cordapp'
+
+dependencies {
+    // Corda core and runtime for contracts
+    cordaCompile "net.corda:corda-core:4.8"
+    cordaRuntime "net.corda:corda:4.8"
+}
+
+cordapp {
+    // Set platform versions compatible with Kaleido (Corda 4.x)
+    targetPlatformVersion 4
+    minimumPlatformVersion 4
+    contract {
+        name "Health Contract"
+        vendor "YourOrg"
+        licence "Apache-2.0"
+        versionId 1
+    }
+}
+
+// Ensure the manifest contains the contract classes entry
+jar {
+    manifest {
+        attributes(
+                'Corda-Contract-Classes': 'com.health.contracts.PatientContract'
+        )
+    }
+}

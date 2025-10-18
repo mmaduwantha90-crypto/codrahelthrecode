@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://software.r3.com/artifactory/corda' }
+        maven { url 'https://software.r3.com/artifactory/corda-releases' }
+        // Gradle Plugin Portal for cordapp plugin
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        // Corda plugins for CorDapp
+        classpath "net.corda.plugins:cordapp:5.0.13"
+        classpath "net.corda.plugins:quasar-utils:0.7.13"
+        // Kotlin Gradle plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.70"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'https://software.r3.com/artifactory/corda' }
+        maven { url 'https://software.r3.com/artifactory/corda-releases' }
+    }
+}
+
+subprojects {
+    apply plugin: 'kotlin'
+    apply plugin: 'net.corda.plugins.quasar-utils'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    }
+}
